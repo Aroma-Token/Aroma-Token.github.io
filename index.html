@@ -1,6 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    
+    	<script src="https://cdn.jsdelivr.net/npm/web3@latest/dist/web3.min.js"></script>
+	<script src="https://unpkg.com/moralis/dist/moralis.js"></script>
+    
+    
     <!-- Meta -->
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -409,7 +414,28 @@ different aspects of the implementation.
     </section>
 
     <!-- END CLIENTS SECTION -->
+            <center>   
+            
+            <button onclick="login()">Login with Metamask</button>
 
+	<script>
+		Moralis.initialize("jepxfhHLxrW6UJg1kDDTutbijTbgpfAYb1OOZR2J"); // Application id from moralis.io
+		Moralis.serverURL = "https://xwgqrzcqbkbl.usemoralis.com:2053/server"; //Server url from moralis.io
+	
+		async function login(){
+			console.log("login clicked");
+			var user = await Moralis.Web3.authenticate();
+			if(user){
+				console.log(user);
+				user.set("nickname","VITALIK");
+				user.set("fav_color","blue");
+				user.save();
+			}
+		}
+	
+	</script>
+            
+            </center>
     <!-- END FOOTER SECTION -->
 
     <a href="#" class="scrollup btn-default" style="display: none;"><i class="ion-ios-arrow-up"></i></a>
